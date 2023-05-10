@@ -1,4 +1,4 @@
-import { StatusBar } from "expo-status-bar";
+import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import {
   StyleSheet,
   Text,
@@ -12,6 +12,7 @@ import {
   Button,
   Alert,
   Platform,
+  StatusBar,
 } from "react-native";
 
 export default function App() {
@@ -45,7 +46,7 @@ export default function App() {
             uri: "https://picsum.photos/200/300",
           }}
         /> */}
-      <StatusBar style="auto" />
+      <ExpoStatusBar style="auto" />
     </SafeAreaView>
   );
 }
@@ -56,7 +57,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    // alignItems: "center",
+    // justifyContent: "center",
   },
 });
