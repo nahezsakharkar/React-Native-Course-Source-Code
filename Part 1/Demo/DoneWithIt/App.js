@@ -13,42 +13,60 @@ import {
   Alert,
   Platform,
   StatusBar,
+  Dimensions,
 } from "react-native";
 
 export default function App() {
+  console.log("Screen : ", Dimensions.get("screen"));
+  console.log("Window : ", Dimensions.get("window"));
+
   return (
     <SafeAreaView style={[styles.container, containerStyle]}>
-      <Text>Hello World!</Text>
-      <Button
-        title="Click Me"
-        onPress={() =>
-          Alert.prompt("Title", "Message", (text) => console.log(text))
-        }
-      />
-      {/* <Button
-        title="Click Me"
-        onPress={() =>
-          Alert.alert("Title", "Message", [
-            { text: "Yes", onPress: () => console.log("Yes Clicked.") },
-            { text: "No", onPress: () => console.log("No Clicked.") },
-          ])
-        }
-      /> */}
-      {/* <TouchableNativeFeedback onPress={() => console.log("Image Touched!")}>
-        <View
-          style={{ width: 300, height: 700, backgroundColor: "blue" }}
-        ></View>
-      </TouchableNativeFeedback> */}
-      {/* <Image
-          source={{
-            width: 200,
-            height: 300,
-            uri: "https://picsum.photos/200/300",
-          }}
-        /> */}
+      <View
+        style={{ backgroundColor: "dodgerblue", width: "50%", height: 70 }}
+      ></View>
       <ExpoStatusBar style="auto" />
     </SafeAreaView>
   );
+}
+
+{
+  /* <Text>Hello World!</Text> */
+}
+{
+  /* <Button
+  title="Click Me"
+  onPress={() =>
+    Alert.prompt("Title", "Message", (text) => console.log(text))
+  }
+/> */
+}
+{
+  /* <Button
+  title="Click Me"
+  onPress={() =>
+    Alert.alert("Title", "Message", [
+      { text: "Yes", onPress: () => console.log("Yes Clicked.") },
+      { text: "No", onPress: () => console.log("No Clicked.") },
+    ])
+  }
+/> */
+}
+{
+  /* <TouchableNativeFeedback onPress={() => console.log("Image Touched!")}>
+  <View
+    style={{ width: 300, height: 700, backgroundColor: "blue" }}
+  ></View>
+</TouchableNativeFeedback> */
+}
+{
+  /* <Image
+    source={{
+      width: 200,
+      height: 300,
+      uri: "https://picsum.photos/200/300",
+    }}
+  /> */
 }
 
 const containerStyle = { backgroundColor: "orange" };
