@@ -25,18 +25,39 @@ export default function App() {
         style={{
           backgroundColor: "dodgerblue",
           flex: 1,
-          flexDirection: "",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+          // alignContent: "center",
+          // flexWrap: "wrap",
         }}
       >
         <View
-          style={{ backgroundColor: "blue", width: 100, height: 100 }}
+          style={{
+            backgroundColor: "blue",
+            flexBasis: 100, // equivalent to height or width
+            flexGrow: 1, // will grow to fit whole into the vacant space
+            flexShrink: 1, // will shrink to adust other items
+            width: 100,
+            height: 100,
+            alignSelf: "flex-end",
+          }}
         ></View>
         <View
-          style={{ backgroundColor: "gold", width: 100, height: 100 }}
+          style={{ backgroundColor: "gold", width: 300, height: 100 }}
         ></View>
         <View
           style={{ backgroundColor: "tomato", width: 100, height: 100 }}
         ></View>
+        {/* <View
+          style={{ backgroundColor: "gray", width: 100, height: 100 }}
+        ></View>
+        <View
+          style={{ backgroundColor: "greenyellow", width: 100, height: 100 }}
+        ></View>
+        <View
+          style={{ backgroundColor: "purple", width: 100, height: 100 }}
+        ></View> */}
       </View>
       <ExpoStatusBar style="auto" />
     </SafeAreaView>
