@@ -10,6 +10,7 @@ import {
   TouchableHighlight,
   TouchableNativeFeedback,
   Button,
+  Alert,
 } from "react-native";
 
 export default function App() {
@@ -17,10 +18,20 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <Text>Hello World!</Text>
       <Button
-        color="orange"
         title="Click Me"
-        onPress={() => console.log("Button Pressed !")}
+        onPress={() =>
+          Alert.prompt("Title", "Message", (text) => console.log(text))
+        }
       />
+      {/* <Button
+        title="Click Me"
+        onPress={() =>
+          Alert.alert("Title", "Message", [
+            { text: "Yes", onPress: () => console.log("Yes Clicked.") },
+            { text: "No", onPress: () => console.log("No Clicked.") },
+          ])
+        }
+      /> */}
       {/* <TouchableNativeFeedback onPress={() => console.log("Image Touched!")}>
         <View
           style={{ width: 300, height: 700, backgroundColor: "blue" }}
