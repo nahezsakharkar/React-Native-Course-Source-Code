@@ -11,11 +11,12 @@ import {
   TouchableNativeFeedback,
   Button,
   Alert,
+  Platform,
 } from "react-native";
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, containerStyle]}>
       <Text>Hello World!</Text>
       <Button
         title="Click Me"
@@ -48,6 +49,8 @@ export default function App() {
     </SafeAreaView>
   );
 }
+
+const containerStyle = { backgroundColor: "orange" };
 
 const styles = StyleSheet.create({
   container: {
