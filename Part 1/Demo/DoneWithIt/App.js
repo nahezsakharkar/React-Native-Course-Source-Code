@@ -14,16 +14,31 @@ import {
   Platform,
   StatusBar,
   Dimensions,
+  useWindowDimensions,
 } from "react-native";
 
 export default function App() {
-  console.log("Screen : ", Dimensions.get("screen"));
-  console.log("Window : ", Dimensions.get("window"));
+  // console.log("Screen : ", Dimensions.get("screen"));
+  // console.log("Window : ", Dimensions.get("window"));
+
+  const orientation = () => {
+    const { height, width, scale, fontScale } = useWindowDimensions();
+    return {
+      portrait: height >= width,
+      landscape: width >= height,
+    };
+  };
+
+  const { landscape } = orientation();
 
   return (
     <SafeAreaView style={[styles.container, containerStyle]}>
       <View
-        style={{ backgroundColor: "dodgerblue", width: "50%", height: 70 }}
+        style={{
+          backgroundColor: "dodgerblue",
+          width: "100%",
+          height: landscape ? "100%" : "30%",
+        }}
       ></View>
       <ExpoStatusBar style="auto" />
     </SafeAreaView>
