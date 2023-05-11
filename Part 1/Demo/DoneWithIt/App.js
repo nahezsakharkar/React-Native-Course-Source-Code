@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { Text, View } from "react-native";
 
 export default function App() {
   return (
@@ -9,18 +9,21 @@ export default function App() {
         alignItems: "center",
       }}
     >
-      <View
+      <Text
         style={{
-          backgroundColor: "dodgerblue",
-          width: 100,
-          height: 100,
-          borderWidth: 10,
-          borderColor: "royalblue",
-          borderRadius: 50,
-          // borderTopWidth: 20,
-          // borderTopLeftRadius: 50,
+          // fontFamily: "Roboto",
+          fontSize: 30,
+          fontStyle: "italic",
+          fontWeight: "600", // or bold, etc
+          color: "tomato",
+          textTransform: "capitalize",
+          textAlign: "center",
+          lineHeight: 30,
         }}
-      ></View>
+      >
+        I Love React Native! This is my first react native app so i will try to
+        add more text inside this and so on and on.
+      </Text>
     </View>
   );
 }
