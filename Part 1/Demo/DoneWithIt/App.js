@@ -1,23 +1,10 @@
-import { useState } from "react";
-import { TextInput, Text } from "react-native";
 import Screen from "./app/components/Screen";
+import AppTextInput from "./app/components/AppTextInput";
 
 export default function App() {
-  const [firstName, setFirstName] = useState("");
-
   return (
     <Screen>
-      <Text>{firstName}</Text>
-      <TextInput
-        secureTextEntry
-        keyboardType="numeric"
-        onChangeText={(text) => setFirstName(text)}
-        placeholder="First Name"
-        style={{
-          borderBottomColor: "#ccc",
-          borderBottomWidth: 1,
-        }}
-      />
+      <AppTextInput placeholder="Username" icon="email" />
     </Screen>
   );
 }
