@@ -13,7 +13,14 @@ import AppText from "./AppText";
 import Screen from "./Screen";
 import PicklerItem from "./PicklerItem";
 
-function AppPicker({ items, icon, placeholder, ...otherProps }) {
+function AppPicker({
+  items,
+  icon,
+  placeholder,
+  onSelectItem,
+  selectedItem,
+  ...otherProps
+}) {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
@@ -28,7 +35,9 @@ function AppPicker({ items, icon, placeholder, ...otherProps }) {
               style={styles.icon}
             />
           )}
-          <AppText style={styles.text}>{placeholder}</AppText>
+          <AppText style={styles.text}>
+            {selectedItem ? selectedItem.label : placeholder}
+          </AppText>
           <MaterialCommunityIcons
             name="chevron-down"
             size={30}
@@ -45,7 +54,10 @@ function AppPicker({ items, icon, placeholder, ...otherProps }) {
             renderItem={({ item }) => (
               <PicklerItem
                 label={item.label}
-                onPress={() => console.log(item)}
+                onPress={() => {
+                  setModalVisible(false);
+                  onSelectItem(item);
+                }}
               />
             )}
           />
