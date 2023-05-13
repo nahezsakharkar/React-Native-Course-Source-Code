@@ -11,12 +11,13 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import defaultStyles from "../config/styles";
 import AppText from "./AppText";
 import Screen from "./Screen";
-import PicklerItem from "./PicklerItem";
+import PickerItem from "./PickerItem";
 
 function AppPicker({
   items,
   icon,
   placeholder,
+  PickerItemComponent = PickerItem,
   onSelectItem,
   selectedItem,
   width = "100%",
@@ -41,9 +42,6 @@ function AppPicker({
           ) : (
             <AppText style={styles.placeholder}>{placeholder}</AppText>
           )}
-          {/* <AppText style={styles.text}>
-            {selectedItem ? selectedItem.label : placeholder}
-          </AppText> */}
           <MaterialCommunityIcons
             name="chevron-down"
             size={30}
@@ -58,7 +56,7 @@ function AppPicker({
             data={items}
             keyExtractor={(item) => item.value.toString()}
             renderItem={({ item }) => (
-              <PicklerItem
+              <PickerItemComponent
                 label={item.label}
                 onPress={() => {
                   setModalVisible(false);
