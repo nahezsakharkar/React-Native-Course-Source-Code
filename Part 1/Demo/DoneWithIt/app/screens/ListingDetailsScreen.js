@@ -1,5 +1,5 @@
 import AppText from "../components/AppText";
-import ListItem from "../components/ListItem";
+import ListItem from "../components/lists/ListItem";
 import colors from "../config/colors";
 
 const { View, Image, StyleSheet } = require("react-native");
