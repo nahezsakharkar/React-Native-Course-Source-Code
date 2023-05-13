@@ -1,10 +1,8 @@
 import { StyleSheet, Image } from "react-native";
-import { Formik } from "formik";
 import * as Yup from "yup";
 
-import AppButton from "../components/AppButton";
 import Screen from "../components/Screen";
-import ErrorMessage from "../components/ErrorMessage";
+import AppForm from "../components/AppForm";
 import AppFormField from "../components/AppFormField";
 import SubmitButton from "../components/SubmitButton";
 
@@ -24,35 +22,31 @@ function LoginScreen(props) {
     <Screen style={styles.container}>
       <Image style={styles.logo} source={require("../assets/logo-red.png")} />
 
-      <Formik
+      <AppForm
         initialValues={{ email: "", password: "" }}
         onSubmit={(values) => console.log(values)}
         validationSchema={validationSchema}
       >
-        {() => (
-          <>
-            <AppFormField
-              autoCapitalize="none"
-              autoCorrect={false}
-              keyboardType="email-address"
-              icon="email"
-              placeholder="Email"
-              textContentType="emailAddress"
-              name="email"
-            />
-            <AppFormField
-              autoCapitalize="none"
-              autoCorrect={false}
-              secureTextEntry
-              icon="lock"
-              placeholder="Password"
-              textContentType="password"
-              name="password"
-            />
-            <SubmitButton title="Login" />
-          </>
-        )}
-      </Formik>
+        <AppFormField
+          autoCapitalize="none"
+          autoCorrect={false}
+          keyboardType="email-address"
+          icon="email"
+          placeholder="Email"
+          textContentType="emailAddress"
+          name="email"
+        />
+        <AppFormField
+          autoCapitalize="none"
+          autoCorrect={false}
+          secureTextEntry
+          icon="lock"
+          placeholder="Password"
+          textContentType="password"
+          name="password"
+        />
+        <SubmitButton title="Login" />
+      </AppForm>
     </Screen>
   );
 }
