@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { Button, Image } from "react-native";
-import Screen from "./app/components/Screen";
 import * as ImagePicker from "expo-image-picker";
+import Screen from "./app/components/Screen";
 import ImageInput from "./app/components/ImageInput";
 
 export default function App() {
@@ -31,9 +30,10 @@ export default function App() {
 
   return (
     <Screen>
-      <Button title="Select Image" onPress={selectImage} />
-      <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />
-      <ImageInput imageUri={imageUri} />
+      <ImageInput
+        imageUri={imageUri}
+        onChangeImage={(uri) => setImageUri(uri)}
+      />
     </Screen>
   );
 }
