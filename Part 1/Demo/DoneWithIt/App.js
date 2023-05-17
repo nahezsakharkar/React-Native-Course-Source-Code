@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { Button, Image } from "react-native";
 import Screen from "./app/components/Screen";
 import * as ImagePicker from "expo-image-picker";
+import ImageInput from "./app/components/ImageInput";
 
 export default function App() {
   const [imageUri, setImageUri] = useState();
-  
+
   const requestPermission = async () => {
     const { granted } = await ImagePicker.requestCameraPermissionsAsync();
     if (!granted) {
@@ -32,6 +33,7 @@ export default function App() {
     <Screen>
       <Button title="Select Image" onPress={selectImage} />
       <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />
+      <ImageInput imageUri={imageUri} />
     </Screen>
   );
 }
