@@ -27,12 +27,22 @@ const Stack = createNativeStackNavigator();
 
 function StackNavigator() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: "dodgerblue" },
+        headerTintColor: "white",
+        // headerShown: false,
+      }}
+    >
       <Stack.Screen name="Tweets" component={Tweets} />
       <Stack.Screen
         name="TweetDetails"
         component={TweetDetails}
-        options={({ route }) => ({ title: route.params.id.toString() })}
+        options={{
+          headerStyle: { backgroundColor: "tomato" },
+          headerTintColor: "white",
+          // headerShown: false,
+        }}
       />
     </Stack.Navigator>
   );
