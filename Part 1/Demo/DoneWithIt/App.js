@@ -2,8 +2,8 @@ import { Text, Button } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Screen from "./app/components/Screen";
+import AuthNavigator from "./app/navigation/AuthNavigator";
 
 function Tweets({ navigation }) {
   return (
@@ -62,23 +62,8 @@ const Tab = createBottomTabNavigator();
 
 function TabNavigator() {
   return (
-    <Tab.Navigator
-      screenOptions={{
-        tabBarActiveBackgroundColor: "tomato",
-        tabBarActiveTintColor: "white",
-        tabBarInactiveBackgroundColor: "#eee",
-        tabBarInactiveTintColor: "black",
-      }}
-    >
-      <Tab.Screen
-        name="Feed"
-        component={Tweets}
-        options={{
-          tabBarIcon: ({ size, color }) => (
-            <MaterialCommunityIcons name="home" size={size} color={color} />
-          ),
-        }}
-      />
+    <Tab.Navigator>
+      <Tab.Screen name="Feed" component={StackNavigator} />
       <Tab.Screen name="Account" component={Account} />
     </Tab.Navigator>
   );
@@ -87,7 +72,7 @@ function TabNavigator() {
 export default function App() {
   return (
     <NavigationContainer>
-      <TabNavigator />
+      <AuthNavigator />
     </NavigationContainer>
   );
 }
