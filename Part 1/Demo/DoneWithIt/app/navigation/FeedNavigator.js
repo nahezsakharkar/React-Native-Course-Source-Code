@@ -1,4 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import routes from "./routes";
 import ListingsScreen from "../screens/ListingsScreen";
 import ListingDetailsScreen from "../screens/ListingDetailsScreen";
 
@@ -17,7 +18,7 @@ export default function FeedNavigator() {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="ListingDetails"
+        name={routes.LISTING_DETAILS}
         component={ListingDetailsScreen}
         options={{ headerTransparent: true, headerTitle: "" }}
       />
