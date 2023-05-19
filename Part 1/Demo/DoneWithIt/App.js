@@ -1,5 +1,6 @@
 import { Text, Button } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import Screen from "./app/components/Screen";
 
@@ -48,10 +49,29 @@ function StackNavigator() {
   );
 }
 
+function Account() {
+  return (
+    <Screen>
+      <Text>Account</Text>
+    </Screen>
+  );
+}
+
+const Tab = createBottomTabNavigator();
+
+function TabNavigator() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Feed" component={Tweets} />
+      <Tab.Screen name="Account" component={Account} />
+    </Tab.Navigator>
+  );
+}
+
 export default function App() {
   return (
     <NavigationContainer>
-      <StackNavigator />
+      <TabNavigator />
     </NavigationContainer>
   );
 }
