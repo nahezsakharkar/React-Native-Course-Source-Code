@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const Joi = require("joi");
+// const Joi = require("joi");
 const multer = require("multer");
 
 const store = require("../store/listings");
 const categoriesStore = require("../store/categories");
-const validateWith = require("../middleware/validation");
+// const validateWith = require("../middleware/validation");
 const auth = require("../middleware/auth");
 const imageResize = require("../middleware/imageResize");
 const delay = require("../middleware/delay");
@@ -17,16 +17,16 @@ const upload = multer({
   limits: { fieldSize: 25 * 1024 * 1024 },
 });
 
-const schema = {
-  title: Joi.string().required(),
-  description: Joi.string().allow(""),
-  price: Joi.number().required().min(1),
-  categoryId: Joi.number().required().min(1),
-  location: Joi.object({
-    latitude: Joi.number().required(),
-    longitude: Joi.number().required(),
-  }).optional(),
-};
+// const schema = {
+//   title: Joi.string().required(),
+//   description: Joi.string().allow(""),
+//   price: Joi.number().required().min(1),
+//   categoryId: Joi.number().required().min(1),
+//   location: Joi.object({
+//     latitude: Joi.number().required(),
+//     longitude: Joi.number().required(),
+//   }).optional(),
+// };
 
 const validateCategoryId = (req, res, next) => {
   if (!categoriesStore.getCategory(parseInt(req.body.categoryId)))
@@ -53,7 +53,6 @@ router.post(
     // using a separate process.
     // auth,
     upload.array("images", config.get("maxImageCount")),
-    validateWith(schema),
     validateCategoryId,
     imageResize,
   ],

@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const Joi = require("joi");
 const { Expo } = require("expo-server-sdk");
 
 const usersStore = require("../store/users");
@@ -8,12 +7,6 @@ const listingsStore = require("../store/listings");
 const messagesStore = require("../store/messages");
 const sendPushNotification = require("../utilities/pushNotifications");
 const auth = require("../middleware/auth");
-const validateWith = require("../middleware/validation");
-
-const schema = {
-  listingId: Joi.number().required(),
-  message: Joi.string().required(),
-};
 
 router.get("/", auth, (req, res) => {
   const messages = messagesStore.getMessagesForUser(req.user.userId);
@@ -35,7 +28,7 @@ router.get("/", auth, (req, res) => {
   res.send(resources);
 });
 
-router.post("/", [auth, validateWith(schema)], async (req, res) => {
+router.post("/", [auth], async (req, res) => {
   const { listingId, message } = req.body;
 
   const listing = listingsStore.getListing(listingId);
