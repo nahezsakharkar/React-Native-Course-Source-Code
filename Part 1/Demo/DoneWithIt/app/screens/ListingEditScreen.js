@@ -90,9 +90,9 @@ function ListingEditScreen() {
       { ...listing, location },
       (progress) => setProgress(progress)
     );
-    setUploadVisible(false);
-
+    
     if (!result.ok) {
+      setUploadVisible(false);
       return alert("Could not save the listing");
     }
   };
