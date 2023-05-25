@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { StyleSheet } from "react-native";
 import * as Yup from "yup";
 import listingsApi from "../api/listings";
@@ -86,6 +87,7 @@ function ListingEditScreen() {
   const handleSubmit = async (listing, { resetForm }) => {
     setProgress(0);
     setUploadVisible(true);
+
     const result = await listingsApi.addListing(
       { ...listing, location },
       (progress) => setProgress(progress)

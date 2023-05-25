@@ -68,6 +68,7 @@ router.post(
     if (req.body.location) listing.location = JSON.parse(req.body.location);
     if (req.user) listing.userId = req.user.userId;
 
+
     store.addListing(listing);
 
     res.status(201).send(listing);
