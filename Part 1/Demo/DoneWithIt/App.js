@@ -6,23 +6,21 @@ import navigationTheme from "./app/navigation/navigationTheme";
 import AppNavigator from "./app/navigation/AppNavigator";
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import authStorage from "./app/auth/storage";
-import jwtDecode from "jwt-decode";
 import * as SplashScreen from "expo-splash-screen";
 
 export default function App() {
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);
 
-  const restoreToken = async () => {
-    const token = await authStorage.getToken();
-    if (!token) return;
-    setUser(jwtDecode(token));
+  const restoreUser = async () => {
+    const user = await authStorage.getUser();
+    if (user) setUser(user);
   };
 
   const prepare = async () => {
     try {
       await SplashScreen.preventAutoHideAsync();
-      await restoreToken();
+      await restoreUser();
     } catch (e) {
       console.warn(e);
     } finally {
