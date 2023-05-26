@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import AuthContext from "./app/auth/context";
 import OfflineNotice from "./app/components/OfflineNotice";
 import { NavigationContainer } from "@react-navigation/native";
@@ -7,6 +7,7 @@ import AppNavigator from "./app/navigation/AppNavigator";
 import AuthNavigator from "./app/navigation/AuthNavigator";
 import authStorage from "./app/auth/storage";
 import * as SplashScreen from "expo-splash-screen";
+import { navigationRef } from "./app/navigation/routeNavigation";
 
 export default function App() {
   const [user, setUser] = useState();
@@ -40,7 +41,7 @@ export default function App() {
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <OfflineNotice />
-      <NavigationContainer theme={navigationTheme}>
+      <NavigationContainer ref={navigationRef} theme={navigationTheme}>
         {user ? <AppNavigator /> : <AuthNavigator />}
       </NavigationContainer>
     </AuthContext.Provider>
