@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import AuthContext from "./app/auth/context";
 import OfflineNotice from "./app/components/OfflineNotice";
 import { NavigationContainer } from "@react-navigation/native";
@@ -8,8 +8,13 @@ import AuthNavigator from "./app/navigation/AuthNavigator";
 import authStorage from "./app/auth/storage";
 import * as SplashScreen from "expo-splash-screen";
 import { navigationRef } from "./app/navigation/routeNavigation";
+import logger from "./app/utility/logger";
+
+logger.start();
 
 export default function App() {
+  logger.log(new Error("Error in App"));
+
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);
 
