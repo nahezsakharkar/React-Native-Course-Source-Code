@@ -21,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./app/assets/icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.johndoe.donewithit"
     },
     "web": {
       "favicon": "./app/assets/favicon.png"
@@ -29,6 +30,9 @@
     "extra": {
       "bugsnag": {
         "apiKey": "68ea84053df5c0c34c616d51e1ada548"
+      },
+      "eas": {
+        "projectId": "e3857f71-267d-4592-ae11-fbc86d1c11f0"
       }
     },
     "hooks": {
